@@ -1,1 +1,547 @@
-/* Kiểu dáng cho Card view và List view. */
+/* Kiểu dáng mềm mại, dịu mắt cho khu vực Nổi bật, Card view và List view (Thành viên 1). */
+
+/* Khung phông nền dịu mắt cho khu vực Điểm nhấn trong thư viện */
+.featured-section {
+  padding: 1.25rem;
+  border: 1px solid #d9e4dc;
+  border-radius: 1.5rem;
+  background: linear-gradient(145deg, #f3f9f5 0%, #f8f7f1 55%, #f2f6fb 100%);
+  box-shadow: 0 1rem 2.25rem rgb(32 42 38 / 5%);
+}
+
+/* Khu vực Điểm nhấn trong thư viện (Xem nhiều nhất / Mới thêm) */
+.featured-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.125rem;
+}
+
+.featured-panel {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.9375rem;
+  padding: 1.25rem;
+  border: 1px solid var(--color-border);
+  border-radius: 1.25rem;
+  background: var(--color-surface);
+  box-shadow: 0 0.625rem 1.75rem rgb(32 42 38 / 5%);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+
+.featured-panel:hover {
+  box-shadow: 0 1rem 2.25rem rgb(32 42 38 / 8%);
+}
+
+/* Sắc thái ấm dịu cho khung Xem nhiều nhất */
+.featured-panel--popular {
+  border-color: #ebd9c5;
+  background: linear-gradient(160deg, #ffffff 0%, #fffaf3 100%);
+}
+
+.featured-panel--popular .featured-panel__count {
+  background: #fdf0df;
+  color: #8a4b08;
+}
+
+.featured-panel--popular .featured-item__rank {
+  background: #f9e4c8;
+  color: #7d4206;
+}
+
+/* Sắc thái xanh bạc hà dịu cho khung Mới thêm */
+.featured-panel--recent {
+  border-color: #cfe4d9;
+  background: linear-gradient(160deg, #ffffff 0%, #f3fbf7 100%);
+}
+
+.featured-panel--recent .featured-panel__count {
+  background: #e2f4ec;
+  color: #174e3e;
+}
+
+.featured-panel--recent .featured-item__rank {
+  background: #d7efe4;
+  color: #174e3e;
+}
+
+.featured-panel__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgb(32 42 38 / 8%);
+}
+
+.featured-panel__title {
+  font-size: 1.0625rem;
+}
+
+.featured-panel__count {
+  padding: 0.25rem 0.6875rem;
+  border-radius: 999px;
+  background: var(--color-page);
+  color: var(--color-muted);
+  font-size: 0.78125rem;
+  font-weight: 700;
+}
+
+.featured-panel__empty {
+  color: var(--color-muted);
+  font-size: 0.9375rem;
+}
+
+.featured-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6875rem;
+}
+
+.featured-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.4375rem;
+  padding: 0.8125rem 0.9375rem;
+  border: 1px solid rgb(32 42 38 / 8%);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 82%);
+  transition: border-color 200ms ease, background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.featured-item:hover {
+  border-color: #9bc8b8;
+  background: #ffffff;
+  box-shadow: 0 0.5rem 1.25rem rgb(33 107 85 / 8%);
+  transform: translateY(-2px);
+}
+
+.featured-item__top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.375rem 0.75rem;
+}
+
+.featured-item__leading {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+}
+
+.featured-item__rank {
+  display: inline-flex;
+  width: 1.5rem;
+  height: 1.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.featured-item__title {
+  font-size: 0.96875rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.featured-item__link {
+  display: inline-block;
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.featured-item__link:hover {
+  color: var(--color-primary-strong);
+  text-decoration: underline;
+}
+
+.featured-item__meta {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+/* Thanh tiêu đề kết quả và nút chuyển đổi Card / List dạng viên thuốc mềm */
+.results-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  margin-top: 1.75rem;
+  margin-bottom: 1.125rem;
+}
+
+.view-switch {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  padding: 0.3125rem;
+  border: 1px solid #d5e0d9;
+  border-radius: 999px;
+  background: #edf3ef;
+  box-shadow: inset 0 1px 2px rgb(32 42 38 / 5%);
+}
+
+.view-switch button {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 1.0625rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: #36453f;
+  font-size: 0.875rem;
+  font-weight: 600;
+  transition: background-color 200ms ease, color 200ms ease, box-shadow 200ms ease, transform 180ms ease;
+}
+
+.view-switch button:hover {
+  background: rgb(255 255 255 / 72%);
+  color: var(--color-text);
+}
+
+.view-switch button:active {
+  transform: scale(0.97);
+}
+
+.view-switch button[aria-pressed="true"],
+.view-switch__btn--active {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, #257a60 0%, #1b5a47 100%);
+  color: #ffffff;
+  box-shadow: 0 0.375rem 0.875rem rgb(33 107 85 / 22%);
+}
+
+.view-switch button[aria-pressed="true"]:hover,
+.view-switch__btn--active:hover {
+  background: linear-gradient(135deg, #1f6c54 0%, #164b3b 100%);
+  color: #ffffff;
+}
+
+/* Trạng thái rỗng khi không có tài liệu phù hợp */
+#empty-message {
+  padding: 2rem 1.5rem;
+  border: 1.5px dashed #c4d5cb;
+  border-radius: 1.25rem;
+  background: linear-gradient(180deg, #fafcf9 0%, #f1f6f3 100%);
+  color: #4f5e57;
+  text-align: center;
+  max-width: none;
+}
+
+/* Vùng chứa danh sách tài liệu: chế độ Card view (mặc định) */
+.document-grid.doc-view--card {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 16.5rem), 1fr));
+  gap: 1.125rem;
+}
+
+/* Vùng chứa danh sách tài liệu: chế độ List view */
+.document-grid.doc-view--list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+}
+
+.document-grid:empty {
+  display: none;
+}
+
+/* Thẻ tài liệu bo tròn mềm mại, nền dịu mắt và viền nhấn nhẹ theo định dạng */
+.doc-item {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  gap: 0.8125rem;
+  padding: 1.25rem;
+  border: 1px solid #dbe4de;
+  border-top: 4px solid #8ec6b3;
+  border-radius: 1.25rem;
+  background: linear-gradient(180deg, #ffffff 0%, #fafcfa 100%);
+  box-shadow: 0 0.5rem 1.5rem rgb(32 42 38 / 5%), 0 1px 2px rgb(32 42 38 / 4%);
+  transition: border-color 220ms ease, background-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.doc-item--pdf {
+  border-top-color: #e49b99;
+  background: linear-gradient(180deg, #ffffff 0%, #fffaf9 100%);
+}
+
+.doc-item--video {
+  border-top-color: #8bb8e8;
+  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+}
+
+.doc-item--link {
+  border-top-color: #7cc4aa;
+  background: linear-gradient(180deg, #ffffff 0%, #f7fcf9 100%);
+}
+
+.doc-item:hover {
+  border-color: #a9cfc0;
+  box-shadow: 0 1rem 2.25rem rgb(33 107 85 / 11%), 0 0.25rem 0.625rem rgb(32 42 38 / 4%);
+  transform: translateY(-4px);
+}
+
+.doc-item--pdf:hover {
+  border-color: #dfb0ae;
+  border-top-color: #d87a77;
+}
+
+.doc-item--video:hover {
+  border-color: #adc9e6;
+  border-top-color: #5b9ad9;
+}
+
+.doc-item--link:hover {
+  border-color: #9ecdbc;
+  border-top-color: #2c8a6c;
+}
+
+.doc-item__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Nhãn phân loại định dạng tài liệu dạng pastel dịu mắt, tương phản rõ */
+.doc-item__badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.doc-item__badge--pdf {
+  background: #fcebe9;
+  color: #98282b;
+}
+
+.doc-item__badge--video {
+  background: #e9f2fc;
+  color: #1c4e87;
+}
+
+.doc-item__badge--link {
+  background: #e5f5ee;
+  color: #165140;
+}
+
+.doc-item__date {
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.doc-item__body {
+  display: flex;
+  min-width: 0;
+  flex: 1 1 auto;
+  flex-direction: column;
+  gap: 0.5625rem;
+}
+
+.doc-item__title {
+  font-size: 1.0625rem;
+  line-height: 1.38;
+}
+
+.doc-item__title-link {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 180ms ease;
+}
+
+.doc-item__title-link:hover {
+  color: var(--color-primary-strong);
+  text-decoration: underline;
+}
+
+.doc-item__summary {
+  color: #55635c;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+}
+
+/* Danh sách tag gắn trên từng tài liệu */
+.doc-item__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4375rem;
+  padding: 0;
+  list-style: none;
+}
+
+.doc-item__tag {
+  padding: 0.1875rem 0.625rem;
+  border: 1px solid #d8e4dd;
+  border-radius: 999px;
+  background: #f1f6f3;
+  color: #31433b;
+  font-size: 0.75rem;
+  font-weight: 500;
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.doc-item:hover .doc-item__tag {
+  border-color: #c3d9ce;
+  background: #e9f3ee;
+}
+
+/* Phần chân thẻ: thống kê và nút mở chi tiết bo tròn mềm */
+.doc-item__footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.625rem;
+  padding-top: 0.8125rem;
+  border-top: 1px solid rgb(32 42 38 / 8%);
+}
+
+.doc-item__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem 0.875rem;
+  color: var(--color-muted);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.doc-item__action {
+  display: inline-flex;
+  min-height: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.4375rem 1rem;
+  border: 1px solid #b6d6c9;
+  border-radius: 999px;
+  background: #edf7f2;
+  color: var(--color-primary-strong);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 200ms ease, color 200ms ease, border-color 200ms ease, transform 180ms ease, box-shadow 200ms ease;
+}
+
+.doc-item__action:hover {
+  border-color: var(--color-primary);
+  background: linear-gradient(135deg, #257a60 0%, #1b5a47 100%);
+  color: #ffffff;
+  box-shadow: 0 0.375rem 1rem rgb(33 107 85 / 22%);
+  transform: translateY(-1px);
+}
+
+.doc-item__action:active {
+  transform: scale(0.98);
+}
+
+/* Responsive từ 600px: bố cục 2 cột cho khu Nổi bật và hàng ngang cho List view */
+@media (min-width: 600px) {
+  .featured-section {
+    padding: 1.625rem;
+  }
+
+  .featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+  }
+
+  .doc-view--list .doc-item {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1.0625rem 1.375rem;
+    border-top: 1px solid #dbe4de;
+    border-left: 5px solid #8ec6b3;
+  }
+
+  .doc-view--list .doc-item--pdf {
+    border-left-color: #e49b99;
+  }
+
+  .doc-view--list .doc-item--video {
+    border-left-color: #8bb8e8;
+  }
+
+  .doc-view--list .doc-item--link {
+    border-left-color: #7cc4aa;
+  }
+
+  .doc-view--list .doc-item:hover {
+    transform: translateX(4px);
+  }
+
+  .doc-view--list .doc-item--pdf:hover {
+    border-top-color: #dfb0ae;
+    border-left-color: #d87a77;
+  }
+
+  .doc-view--list .doc-item--video:hover {
+    border-top-color: #adc9e6;
+    border-left-color: #5b9ad9;
+  }
+
+  .doc-view--list .doc-item--link:hover {
+    border-top-color: #9ecdbc;
+    border-left-color: #2c8a6c;
+  }
+
+  .doc-view--list .doc-item__header {
+    flex: 0 0 6.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .doc-view--list .doc-item__body {
+    flex: 1 1 auto;
+  }
+
+  .doc-view--list .doc-item__footer {
+    flex: 0 0 auto;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding-top: 0;
+    padding-left: 1.125rem;
+    border-top: 0;
+    border-left: 1px solid rgb(32 42 38 / 8%);
+  }
+}
+
+/* Responsive từ 900px: mở rộng khoảng cách và số cột tối ưu */
+@media (min-width: 900px) {
+  .featured-section {
+    padding: 2rem;
+  }
+
+  .featured-panel {
+    padding: 1.5rem;
+  }
+
+  .document-grid.doc-view--card {
+    grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+    gap: 1.375rem;
+  }
+
+  .doc-view--list .doc-item__footer {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.125rem;
+  }
+}
