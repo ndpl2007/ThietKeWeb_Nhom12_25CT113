@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kho tri thức cá nhân</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/views.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-brand" href="#home" aria-label="Kho tri thức cá nhân - Trang chủ">
+      <span aria-hidden="true">◈</span>
+      <span>Kho tri thức</span>
+    </a>
+    <nav aria-label="Điều hướng chính">
+      <a href="#documents">Thư viện</a>
+      <a href="#add-document">Thêm tài liệu</a>
+    </nav>
+  </header>
+
+  <main id="home">
+    <section class="page-intro" aria-labelledby="page-title">
+      <p class="eyebrow">PERSONAL KNOWLEDGE BASE</p>
+      <h1 id="page-title">Một nơi cho mọi điều bạn muốn ghi nhớ.</h1>
+      <p>Lưu trữ, tìm kiếm và khám phá lại những tài liệu quan trọng của bạn.</p>
+    </section>
+
+    <section class="featured-section" aria-labelledby="featured-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">KHÁM PHÁ</p>
+          <h2 id="featured-heading">Điểm nhấn trong thư viện</h2>
+        </div>
+      </div>
+      <div id="featured-list" class="featured-grid">
+        <article class="featured-panel">
+          <h3>Xem nhiều nhất</h3>
+          <p>Tài liệu được xem nhiều sẽ xuất hiện ở đây.</p>
+        </article>
+        <article class="featured-panel">
+          <h3>Mới thêm</h3>
+          <p>Tài liệu mới lưu sẽ xuất hiện ở đây.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="documents" class="library-section" aria-labelledby="library-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">BỘ SƯU TẬP CỦA BẠN</p>
+          <h2 id="library-heading">Thư viện tài liệu</h2>
+        </div>
+        <a class="text-link" href="#add-document">+ Thêm tài liệu</a>
+      </div>
+
+      <div class="library-tools">
+        <div class="search-field">
+          <label for="search-input">Tìm trong thư viện</label>
+          <input
+            id="search-input"
+            name="search"
+            type="search"
+            placeholder="Tìm theo tên, tag hoặc mô tả..."
+            autocomplete="off"
+          >
+        </div>
+
+        <div class="filter-group">
+          <p id="type-filter-label">Định dạng</p>
+          <nav id="type-filters" aria-labelledby="type-filter-label" aria-label="Lọc theo định dạng">
+            <button type="button" data-type="ALL" aria-pressed="true">Tất cả</button>
+            <button type="button" data-type="PDF" aria-pressed="false">PDF</button>
+            <button type="button" data-type="Video" aria-pressed="false">Video</button>
+            <button type="button" data-type="Link" aria-pressed="false">Link</button>
+          </nav>
+        </div>
+
+        <div class="filter-group">
+          <p id="tag-filter-label">Chủ đề</p>
+          <div id="tag-filters" aria-labelledby="tag-filter-label">
+            <p>Chủ đề sẽ xuất hiện khi có tài liệu trong thư viện.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="results-heading">
+        <h3>Kết quả</h3>
+        <div class="view-switch" role="group" aria-label="Chế độ hiển thị">
+          <button id="btn-card-view" type="button" aria-pressed="true">Thẻ</button>
+          <button id="btn-list-view" type="button" aria-pressed="false">Danh sách</button>
+        </div>
+      </div>
+
+      <p id="empty-message" role="status" aria-live="polite" hidden>
+        Không tìm thấy tài liệu phù hợp. Hãy thử đổi từ khóa hoặc bỏ bớt bộ lọc.
+      </p>
+      <div id="doc-container" class="document-grid" aria-live="polite"></div>
+    </section>
+
+    <section id="add-document" class="add-section" aria-labelledby="add-heading">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LƯU LẠI ĐIỀU HỮU ÍCH</p>
+          <h2 id="add-heading">Thêm tài liệu mới</h2>
+        </div>
+      </div>
+
+      <form id="add-form" novalidate>
+        <div class="form-field">
+          <label for="document-title">Tiêu đề <span aria-hidden="true">*</span></label>
+          <input id="document-title" name="title" type="text" required>
+        </div>
+
+        <div class="form-field">
+          <label for="document-type">Định dạng <span aria-hidden="true">*</span></label>
+          <select id="document-type" name="type" required>
+            <option value="" selected disabled>Chọn định dạng</option>
+            <option value="PDF">PDF</option>
+            <option value="Video">Video</option>
+            <option value="Link">Link</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="document-tags">Tag <span class="field-hint">(ngăn cách bằng dấu phẩy)</span></label>
+          <input id="document-tags" name="tags" type="text" placeholder="Ví dụ: HTML, Thiết kế">
+        </div>
+
+        <div class="form-field">
+          <label for="document-url">Đường dẫn</label>
+          <input
+            id="document-url"
+            name="url"
+            type="text"
+            inputmode="url"
+            autocomplete="url"
+            placeholder="https://..."
+          >
+        </div>
+
+        <div class="form-field form-field-wide">
+          <label for="document-summary">Mô tả ngắn</label>
+          <textarea id="document-summary" name="summary" rows="3"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit">Lưu tài liệu</button>
+          <p id="form-message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>Kho tri thức cá nhân · Lưu giữ những điều đáng nhớ.</p>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/filter.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/tags.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
